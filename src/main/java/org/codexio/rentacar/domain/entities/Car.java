@@ -24,6 +24,7 @@ public class Car extends BaseEntity {
     private Integer doors;
     private Integer passengers;
     private BigDecimal price;
+    private String description;
     private Category category;
     private List<User> renters;
     private List<Rent> rents;
@@ -202,5 +203,14 @@ public class Car extends BaseEntity {
 
     public void setRents(List<Rent> rents) {
         this.rents = rents;
+    }
+
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

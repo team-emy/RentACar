@@ -374,7 +374,7 @@ a.slicknav_btn {
 /*== Slider Area CSS Start ==*/
 
 .single-slide-item {
-	background-image: url(assets/img/banner.jpg);
+	background-image: url(../img/banner.jpg);
 	background-position: center center;
 	background-size: cover;
 	padding: 80px 0;
@@ -387,7 +387,7 @@ a.slicknav_btn {
 }
 
 .book-a-car select.custom-select {
-	background-image: url("assets/img/caret-cion.png");
+	background-image: url("../img/caret-cion.png");
 	background-position: right 13px center;
 	background-size: 12px auto;
 }
@@ -685,7 +685,7 @@ a.slicknav_btn {
 /*== Fun Fact Area CSS Start ==*/
 
 #funfact-area {
-	background-image: url(assets/img/funfact-bg.jpg);
+	background-image: url(../img/funfact-bg.jpg);
 	background-size: cover;
 	background-position: center center;
 	color: #fff;
@@ -1025,7 +1025,7 @@ a.slicknav_btn {
 /*== Pricing Area CSS Start ==*/
 
 #pricing-area {
-	background-image: url(assets/img/pricing-bg.jpg);
+	background-image: url(../img/pricing-bg.jpg);
 	background-size: cover;
 	background-position: center center;
 }
@@ -1150,7 +1150,7 @@ a.slicknav_btn {
 }
 
 #mobile-app-area::after {
-	background-image: url("assets/img/mobile-app.png");
+	background-image: url("../img/mobile-app.png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -1673,7 +1673,7 @@ body,
 }
 
 .book-ur-car select.custom-select {
-	background-image: url("assets/img/caret-cion.png");
+	background-image: url("../img/caret-cion.png");
 	background-position: right 12px center;
 	background-size: 12px auto;
 }
@@ -1898,15 +1898,15 @@ body,
 /*== Slider Area CSS ==*/
 
 .slider-bg-1 {
-	background-image: url("assets/img/slider-img/slider-img-4.jpg");
+	background-image: url("../img/slider-img/slider-img-4.jpg");
 }
 
 .slider-bg-2 {
-	background-image: url("assets/img/slider-img/slider-img-2.jpg");
+	background-image: url("../img/slider-img/slider-img-2.jpg");
 }
 
 .slider-bg-3 {
-	background-image: url("assets/img/slider-img/slider-img-3.jpg");
+	background-image: url("../img/slider-img/slider-img-3.jpg");
 }
 
 .home-slider-item {
@@ -1983,15 +1983,15 @@ body,
 /*== What Do Area CSS ==*/
 
 .we-do-bg-1 {
-	background-image: url(assets/img/we-do/service1-img.png);
+	background-image: url(../img/we-do/service1-img.png);
 }
 
 .we-do-bg-2 {
-	background-image: url(assets/img/we-do/service2-img.png);
+	background-image: url(../img/we-do/service2-img.png);
 }
 
 .we-do-bg-3 {
-	background-image: url(assets/img/we-do/service3-img.png);
+	background-image: url(../img/we-do/service3-img.png);
 }
 
 .single-we-do {
@@ -2228,7 +2228,7 @@ body,
 /*== Page Title CSS ==*/
 
 #page-title-area {
-	background-image: url("assets/img/header2.jpg");
+	background-image: url("../img/header2.jpg");
 	background-position: center center;
 	background-size: cover;
 	padding-top: 150px;
@@ -2253,19 +2253,19 @@ body,
 }
 
 .car-thumb-1 {
-	background-image: url(assets/img/car/car-1.jpg);
+	background-image: url(../img/car/car-1.jpg);
 }
 
 .car-thumb-2 {
-	background-image: url(assets/img/car/car-2.jpg);
+	background-image: url(../img/car/car-2.jpg);
 }
 
 .car-thumb-3 {
-	background-image: url(assets/img/car/car-3.jpg);
+	background-image: url(../img/car/car-3.jpg);
 }
 
 .car-thumb-4 {
-	background-image: url(assets/img/car/car-4.jpg);
+	background-image: url(../img/car/car-4.jpg);
 }
 
 .car-list-thumb {
@@ -2658,19 +2658,19 @@ body,
 ================================*/
 
 .ser-thumb-bg-1 {
-	background-image: url(assets/img/car/car-1.jpg);
+	background-image: url(../img/car/car-1.jpg);
 }
 
 .ser-thumb-bg-2 {
-	background-image: url(assets/img/car/car-2.jpg);
+	background-image: url(../img/car/car-2.jpg);
 }
 
 .ser-thumb-bg-3 {
-	background-image: url(assets/img/car/car-3.jpg);
+	background-image: url(../img/car/car-3.jpg);
 }
 
 .ser-thumb-bg-4 {
-	background-image: url(assets/img/car/car-5.jpg);
+	background-image: url(../img/car/car-5.jpg);
 }
 
 .single-service-item {
@@ -2760,7 +2760,7 @@ body,
 ================================*/
 
 #our-facility {
-	background-image: url(assets/img/slider-img/slider-img-1.jpg);
+	background-image: url(../img/slider-img/slider-img-1.jpg);
 	background-size: cover;
 	background-position: center center;
 	color: #fff;
@@ -3064,7 +3064,7 @@ body,
 ================================*/
 
 #page-404-wrap {
-	background-image: url("assets/img/banner.jpg");
+	background-image: url("../img/banner.jpg");
 	background-position: center center;
 	background-size: cover;
 	color: #fff;
