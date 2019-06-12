@@ -18,7 +18,7 @@ public class Car extends BaseEntity {
     private Double horsepower;
     private String picture;
     private User owner;
-    private Boolean isRented;
+    private boolean isRented;
     private Boolean hasAC;
     private String transmission;
     private Integer doors;
@@ -109,12 +109,12 @@ public class Car extends BaseEntity {
         this.owner = owner;
     }
 
-    @Column(name = "is_rented", nullable = false)
-    public Boolean getRented() {
+    @Column(name = "is_rented", nullable = false, columnDefinition = "false")
+    public boolean getRented() {
         return isRented;
     }
 
-    public void setRented(Boolean rented) {
+    public void setRented(boolean rented) {
         isRented = rented;
     }
 

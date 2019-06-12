@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+    <th:block th:include="~{/fragments/anonymous-navbar}"></th:block>
+</head>
+<body>
+
+<!--== Page Title Area Start ==-->
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Create a car</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <br>
+                    <br>
+                    <h4>EmyCar - car rental system</h4>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Login Page Content Start ==-->
+<section id="lgoin-page-wrap" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 m-auto">
+                <div class="login-page-content">
+                    <div class="login-form">
+                        <h3>Add your car info here</h3>
+                        <form method="post" th:action="@{/cars/create}">
+                            <div class="username">
+                                <input type="text" placeholder="Make" name="make">
+                            </div>
+                            <div class="username">
+                                <input type="text" placeholder="Model" name="model">
+                            </div>
+                            <div class="username">
+                                <input type="number" placeholder="Year" name="year">
+                            </div>
+                            <div class="username">
+                                <input type="text" placeholder="Fuel" name="fuel">
+                            </div>
+                            <div class="username">
+                                <input type="text" placeholder="Fuel Consumption" name="fuelConsumption">
+                            </div>
+                            <div class="username">
+                                <input type="number" placeholder="Horsepower" name="horsepower">
+                            </div>
+                            <div class="username">
+                                <input type="text" placeholder="Image URL" name="picture">
+                            </div>
+                            <div class="username">
+                                <input type="checkbox" value="true" name="hasAC">AC
+                            </div>
+                            <div class="username">
+                                <select id="" name="transmission">
+                                    <option value="Auto">Auto</option>
+                                    <option value="Manual">Manual</option>
+                                </select>
+                            </div>
+                            <div class="username">
+                                <input type="number" placeholder="Number of Doors" name="doors">
+                            </div>
+                            <div class="username">
+                                <input type="text" placeholder="Number of passengers" name="passengers">
+                            </div>
+                            <div class="username">
+                                <input type="number" placeholder="Price per day" name="price">
+                            </div>
+                            <div class="username">
+                                <textarea placeholder="Description" name="description"></textarea>
+                            </div>
+                            <div class="username">
+                                <select name="category">
+                                    <option value="Small">Small</option>
+                                    <option value="Midsize">Midsize</option>
+                                    <option value="Large">Large</option>
+                                </select>
+                            </div>
+                            <div class="log-btn">
+                                <button type="submit"><i class="fa fa-sign-in"></i>Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Login Page Content End ==-->
+
+<th:block th:include="~{/fragments/footer}"></th:block>
+</body>
+</html>
