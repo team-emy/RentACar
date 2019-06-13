@@ -3,6 +3,7 @@ package org.codexio.rentacar.web.controllers;
 import org.codexio.rentacar.domain.models.view.CarHomeViewModel;
 import org.codexio.rentacar.service.CarService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,7 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("/")
-    public ModelAndView index(ModelAndView modelAndView){
+    public ModelAndView index(ModelAndView modelAndView) {
         List<CarHomeViewModel> cars = this.carService.findAllCars()
                 .stream()
                 .map(carServiceModel -> this.modelMapper.map(carServiceModel, CarHomeViewModel.class))
@@ -29,8 +30,7 @@ public class HomeController extends BaseController {
 
         modelAndView.addObject("cars", cars);
 
-        return view("index",modelAndView);
+        return view("index", modelAndView);
     }
 
-    
 }
