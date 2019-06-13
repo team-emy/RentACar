@@ -1,3 +1,6 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <th:block th:fragment>
     <head>
         <meta charset="utf-8">
@@ -27,5 +30,25 @@
         <link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
         <!--=== Jquery Min Js ===-->
         <script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+<!--        <th:block>-->
+<!--            <th:block sec:authorize="isAuthenticated()" >-->
+<!--                <th:block th:include="~{fragments/logged-in-navbar}"></th:block>-->
+<!--            </th:block>-->
+<!--            <th:block sec:authorize="isAnonymous()" >-->
+<!--                <th:block th:include="~{fragments/anonymous-navbar}"></th:block>-->
+<!--            </th:block>-->
+<!--        </th:block>-->
+
+        <div sec:authorize="isAuthenticated()">
+             <th:block th:include="~{fragments/logged-in-navbar}"></th:block>
+        </div>
+
+        <div sec:authorize="isAnonymous()">
+            <th:block th:include="~{fragments/anonymous-navbar}"></th:block>
+        </div>
+
+
     </head>
 </th:block>
+</html>

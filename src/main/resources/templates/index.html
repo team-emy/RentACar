@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="~{fragments/head}"></th:block>
-
 </head>
 <body>
 
@@ -15,15 +14,6 @@
                 <div class="section-title  text-center">
                     <div class="book-ur-car">
                         <form action="index2.html">
-                            <div class="pick-location bookinput-item">
-                                <select class="custom-select">
-                                    <option selected>Pick Location</option>
-                                    <option value="1">Dhaka</option>
-                                    <option value="2">Comilla</option>
-                                    <option value="3">Barishal</option>
-                                    <option value="3">Rangpur</option>
-                                </select>
-                            </div>
 
                             <div class="car-choose bookinput-item">
                                 <select class="custom-select">
@@ -36,7 +26,6 @@
 
                             <div class="car-choose bookinput-item">
                                 <select class="custom-select">
-                                    <option selected>Order By Date</option>
                                     <option value="1">Cheapest first</option>
                                     <option value="2">Most Expensive first</option>
                                 </select>
@@ -72,126 +61,24 @@
                 <div class="car-list-content">
                     <div class="row">
                         <!-- Single Car Start -->
+                        <th:block th:each="car : ${cars}">
                         <div class="col-lg-6 col-md-6">
                             <div class="single-car-wrap">
-                                <div class="car-list-thumb car-thumb-1"></div>
+                                <div class="car-list-thumb" th:style="'background-image:url(\'' + @{car.picture} + '\');'"></div>
                                 <div class="car-list-info without-bar">
-                                    <h2><a href="#">Aston Martin One-77</a></h2>
-                                    <h5>39$ Rent /per a day</h5>
-                                    <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
+                                    <h2><a href="#" th:text="|${car.make} ${car.model}|"></a></h2>
+                                    <h5 th:text="|${car.price}  Rent /per a day|"></h5>
                                     <ul class="car-info-list">
-                                        <li>AC</li>
-                                        <li>Diesel</li>
-                                        <li>Auto</li>
+                                        <li th:if="${car.hasAC}">AC</li>
+                                        <li th:text="${car.fuel}"></li>
+                                        <li th:text="${car.transmission}"></li>
                                     </ul>
-                                    <p class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star unmark"></i>
-                                    </p>
-                                    <a href="#" class="rent-btn">Book It</a>
+                                    <a href="#" class="rent-btn">Rent</a>
                                 </div>
                             </div>
                         </div>
+                        </th:block>
                         <!-- Single Car End -->
-
-                        <!-- Single Car Start -->
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-car-wrap">
-                                <div class="car-list-thumb car-thumb-2"></div>
-                                <div class="car-list-info without-bar">
-                                    <h2><a href="#">Aston Martin One-77</a></h2>
-                                    <h5>39$ Rent /per a day</h5>
-                                    <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                    <ul class="car-info-list">
-                                        <li>AC</li>
-                                        <li>Diesel</li>
-                                        <li>Auto</li>
-                                    </ul>
-                                    <p class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star unmark"></i>
-                                    </p>
-                                    <a href="#" class="rent-btn">Book It</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Car End -->
-
-                        <!-- Single Car Start -->
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-car-wrap">
-                                <div class="car-list-thumb car-thumb-3"></div>
-                                <div class="car-list-info without-bar">
-                                    <h2><a href="#">Aston Martin One-77</a></h2>
-                                    <h5>39$ Rent /per a day</h5>
-                                    <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                    <ul class="car-info-list">
-                                        <li>AC</li>
-                                        <li>Diesel</li>
-                                        <li>Auto</li>
-                                    </ul>
-                                    <p class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star unmark"></i>
-                                    </p>
-                                    <a href="#" class="rent-btn">Book It</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Car End -->
-
-                        <!-- Single Car Start -->
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-car-wrap">
-                                <div class="car-list-thumb car-thumb-4"></div>
-                                <div class="car-list-info without-bar">
-                                    <h2><a href="#">Aston Martin One-77</a></h2>
-                                    <h5>39$ Rent /per a day</h5>
-                                    <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                    <ul class="car-info-list">
-                                        <li>AC</li>
-                                        <li>Diesel</li>
-                                        <li>Auto</li>
-                                    </ul>
-                                    <p class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star unmark"></i>
-                                    </p>
-                                    <a href="#" class="rent-btn">Book It</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Car End -->
-                    </div>
-                </div>
-
-                <!-- Page Pagination Start -->
-                <div class="page-pagi">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- Page Pagination End -->
             </div>
             <!-- Car List Content End -->
         </div>
