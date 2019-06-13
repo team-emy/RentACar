@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 public class CarServiceModel {
 
+    private String id;
     private String make;
     private String model;
     private String year;
@@ -22,6 +23,14 @@ public class CarServiceModel {
     private CategoryServiceModel category;
 
     public CarServiceModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMake() {
