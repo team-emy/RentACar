@@ -46,12 +46,18 @@ public class UserController extends BaseController{
             ModelAndView modelAndView,
             @ModelAttribute("userRegisterBindingModel") UserRegisterBindingModel userRegisterBindingModel
     ){
+        if (!userRegisterBindingModel.getPassword()
+                .equals(userRegisterBindingModel.getConfirmPassword())) {
+
+            return redirect("/register");
+        }
+
         UserServiceModel model = this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
         this.userService.register(model);
         
         return redirect("/login");
     }
-    
+
     
     
 }

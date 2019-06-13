@@ -9,6 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CarServiceImpl implements CarService {
 
@@ -18,7 +21,9 @@ public class CarServiceImpl implements CarService {
 
 
     @Autowired
-    public CarServiceImpl(ModelMapper modelMapper, CarRepository carRepository, CategoryRepository categoryRepository) {
+    public CarServiceImpl(ModelMapper modelMapper,
+                          CarRepository carRepository,
+                          CategoryRepository categoryRepository) {
         this.modelMapper = modelMapper;
         this.carRepository = carRepository;
         this.categoryRepository = categoryRepository;
@@ -33,4 +38,14 @@ public class CarServiceImpl implements CarService {
 
         return carServiceModel;
     }
+
+    @Override
+    public List<CarServiceModel> findAllCars() {
+        return this.carRepository.findAll()
+                .stream()
+                .map(c -> this.modelMapper.map(c, CarServiceModel.class))
+                .collect(Collectors.toList());
+    }
+
+
 }
