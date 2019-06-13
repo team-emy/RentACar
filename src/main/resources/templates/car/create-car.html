@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="~{/fragments/head}"></th:block>
-    <th:block th:include="~{/fragments/anonymous-navbar}"></th:block>
+    <th:block th:include="~{fragments/head}"></th:block>
 </head>
 <body>
 
@@ -59,8 +58,8 @@
                             <div class="username">
                                 <input type="checkbox" value="true" name="hasAC">AC
                             </div>
-                            <div class="username">
-                                <select id="" name="transmission">
+                            <div class="dropdown">
+                                <select id="" name="transmission" class="selectpicker">
                                     <option value="Auto">Auto</option>
                                     <option value="Manual">Manual</option>
                                 </select>
@@ -77,15 +76,15 @@
                             <div class="username">
                                 <textarea placeholder="Description" name="description"></textarea>
                             </div>
-                            <div class="username">
-                                <select name="category">
+                            <div class="dropdown">
+                                <select name="category" class="selectpicker">
                                     <option value="Small">Small</option>
                                     <option value="Midsize">Midsize</option>
                                     <option value="Large">Large</option>
                                 </select>
                             </div>
                             <div class="log-btn">
-                                <button type="submit"><i class="fa fa-sign-in"></i>Create</button>
+                                <button type="submit">Create</button>
                             </div>
                         </form>
                     </div>
@@ -96,6 +95,6 @@
 </section>
 <!--== Login Page Content End ==-->
 
-<th:block th:include="~{/fragments/footer}"></th:block>
+<th:block th:include="~{fragments/footer}"></th:block>
 </body>
 </html>

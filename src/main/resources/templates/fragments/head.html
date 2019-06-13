@@ -6,8 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="../../static/assets/img/fav.png" type="image/x-icon" />
-
+        <link rel="shortcut icon" href="https://i.ibb.co/3SkmthS/fav.png">
         <title>EmyCar</title>
 
         <!--=== Bootstrap CSS ===-->
@@ -21,7 +20,7 @@
         <!--=== Gijgo CSS ===-->
         <link th:href="@{/assets/css/plugins/gijgo.css}" rel="stylesheet">
         <!--=== FontAwesome CSS ===-->
-        <link th:h:href="@{/assets/css/font-awesome.css}" rel="stylesheet">
+        <link th:href="@{/assets/css/font-awesome.css}" rel="stylesheet">
         <!--=== Theme Reset CSS ===-->
         <link th:href="@{/assets/css/reset.css}" rel="stylesheet">
         <!--=== Main Style CSS ===-->
@@ -30,25 +29,14 @@
         <link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
         <!--=== Jquery Min Js ===-->
         <script src="/assets/js/jquery-3.2.1.min.js"></script>
-
-<!--        <th:block>-->
-<!--            <th:block sec:authorize="isAuthenticated()" >-->
-<!--                <th:block th:include="~{fragments/logged-in-navbar}"></th:block>-->
-<!--            </th:block>-->
-<!--            <th:block sec:authorize="isAnonymous()" >-->
-<!--                <th:block th:include="~{fragments/anonymous-navbar}"></th:block>-->
-<!--            </th:block>-->
-<!--        </th:block>-->
-
-        <div sec:authorize="isAuthenticated()">
-             <th:block th:include="~{fragments/logged-in-navbar}"></th:block>
-        </div>
-
-        <div sec:authorize="isAnonymous()">
-            <th:block th:include="~{fragments/anonymous-navbar}"></th:block>
-        </div>
-
-
     </head>
+
+    <div sec:authorize="isAuthenticated()">
+        <th:block th:include="~{fragments/logged-in-navbar}"></th:block>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <th:block th:include="~{fragments/anonymous-navbar}"></th:block>
+    </div>
 </th:block>
 </html>
