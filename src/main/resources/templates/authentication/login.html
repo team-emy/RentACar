@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="~{/fragments/head}"></th:block>
-    <th:block th:include="~{/fragments/anonymous-navbar}"></th:block>
+    <th:block th:include="~{fragments/head}"></th:block>
 </head>
 <body>
 
@@ -15,9 +14,6 @@
                 <div class="section-title  text-center">
                     <h2>Login</h2>
                     <span class="title-line"><i class="fa fa-car"></i></span>
-                    <br>
-                    <br>
-                    <h4>EmyCar - car rental system</h4>
                 </div>
             </div>
             <!-- Page Title End -->
@@ -34,7 +30,7 @@
                 <div class="login-page-content">
                     <div class="login-form">
                         <h3>Welcome Back!</h3>
-                        <form action="#">
+                        <form action="index.html">
                             <div class="username">
                                 <input type="text" placeholder="Email">
                             </div>
@@ -47,7 +43,7 @@
                         </form>
                     </div>
                     <div class="create-ac">
-                        <p>Don't have an account? <a href="#">Sign Up</a></p>
+                        <p>Don't have an account? <a href="register.html">Sign Up</a></p>
                     </div>
                 </div>
             </div>
@@ -56,6 +52,6 @@
 </section>
 <!--== Login Page Content End ==-->
 
-<th:block th:include="~{/fragments/footer}"></th:block>
+<th:block th:include="~{fragments/footer}"></th:block>
 </body>
 </html>
