@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Table(name = "rents")
 public class Rent extends BaseEntity{
     
-    private User owner;
-    private User renter;
+    private User seller;
+    private User buyer;
     private BigDecimal totalPrice;
     private LocalDateTime startDay;
     private LocalDateTime endDay;
@@ -19,26 +19,25 @@ public class Rent extends BaseEntity{
     public Rent() {
     }
 
-    @Column(name = "owner", nullable = false)
-    public User getOwner() {
-        return owner;
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "seller_id", referencedColumnName = "id")
+    public User getSeller() {
+        return seller;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setSeller(User seller) {
+        this.seller = seller;
     }
 
     @ManyToOne(targetEntity = User.class)
-    @JoinTable(name = "rents_users"
-            , joinColumns = @JoinColumn(name = "rent_id")
-            , inverseJoinColumns = @JoinColumn(name = "user_id"))
-    public User getRenter() {
-        return renter;
+    @JoinColumn(name = "buyer_id", referencedColumnName = "id")
+    public User getBuyer() {
+        return buyer;
     }
 
-    public void setRenter(User renter) {
-        this.renter = renter;
-    }
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }  
 
     @Column(name = "total_price", nullable = false)
     @DecimalMin("0.01")
@@ -69,9 +68,7 @@ public class Rent extends BaseEntity{
     }
 
     @ManyToOne(targetEntity = Car.class)
-    @JoinTable(name = "rents_cars"
-            , joinColumns = @JoinColumn(name = "rent_id")
-            , inverseJoinColumns = @JoinColumn(name = "car_id"))
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
     public Car getCar() {
         return car;
     }

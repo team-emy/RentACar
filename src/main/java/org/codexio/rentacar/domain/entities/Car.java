@@ -26,11 +26,9 @@ public class Car extends BaseEntity {
     private BigDecimal price;
     private String description;
     private Category category;
-    private List<User> renters;
     private List<Rent> rents;
 
     public Car() {
-        this.renters = new ArrayList<>();
         this.rents = new ArrayList<>();
     }
 
@@ -98,9 +96,7 @@ public class Car extends BaseEntity {
     }
 
     @ManyToOne(targetEntity = User.class)
-    @JoinTable(name = "cars_users"
-            , joinColumns = @JoinColumn(name = "car_id")
-            , inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     public User getOwner() {
         return owner;
     }
@@ -109,7 +105,7 @@ public class Car extends BaseEntity {
         this.owner = owner;
     }
 
-    @Column(name = "is_rented", nullable = false, columnDefinition = "false")
+    @Column(name = "is_rented", nullable = false,columnDefinition = "BIT default 0")
     public boolean getRented() {
         return isRented;
     }
@@ -165,35 +161,13 @@ public class Car extends BaseEntity {
     }
 
     @ManyToOne(targetEntity = Category.class)
-    @JoinTable(name = "cars_categories"
-            , joinColumns = @JoinColumn(name = "car_id")
-            , inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    @ManyToMany(targetEntity = User.class )
-    @JoinTable(
-            name = "renter_cars_users",
-            joinColumns = @JoinColumn(
-                    name = "car_id",
-                    referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "user_id",
-                    referencedColumnName = "id"
-            )
-    )
-    public List<User> getRenters() {
-        return renters;
-    }
-
-    public void setRenters(List<User> renters) {
-        this.renters = renters;
     }
 
     @OneToMany(targetEntity = Rent.class, mappedBy = "car")

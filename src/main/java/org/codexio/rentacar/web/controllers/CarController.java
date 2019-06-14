@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/cars")
 public class CarController extends BaseController {
@@ -31,9 +33,11 @@ public class CarController extends BaseController {
     }
 
     @PostMapping("/create")
-    public ModelAndView createCar(CarCreateBindingModel carCreateBindingModel) {
+    public ModelAndView createCar(CarCreateBindingModel carCreateBindingModel, Principal principal) {
+        String username = principal.getName();
         CarServiceModel carServiceModel = this.modelMapper.map(carCreateBindingModel, CarServiceModel.class);
-        this.carService.createCar(carServiceModel, carCreateBindingModel.getCategory());
+        this.carService.createCar(carServiceModel, username);
+        
         return view("car/create-car");
     }
 

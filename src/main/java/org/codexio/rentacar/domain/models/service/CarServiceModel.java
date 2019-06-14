@@ -20,7 +20,8 @@ public class CarServiceModel {
     private Integer passengers;
     private BigDecimal price;
     private String description;
-    private CategoryServiceModel category;
+    private String category;
+    private UserServiceModel owner;
 
     public CarServiceModel() {
     }
@@ -137,11 +138,19 @@ public class CarServiceModel {
         this.description = description;
     }
 
-    public CategoryServiceModel getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryServiceModel category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public UserServiceModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(UserServiceModel owner) {
+        this.owner = owner;
     }
 }

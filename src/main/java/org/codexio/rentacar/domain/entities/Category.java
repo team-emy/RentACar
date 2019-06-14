@@ -11,7 +11,7 @@ import java.util.List;
 public class Category extends BaseEntity {
     
     private String name;
-    private List<Car>  cars;
+    private List<Car>cars;
 
     public Category() {
     }
@@ -25,7 +25,7 @@ public class Category extends BaseEntity {
         this.name = name;
     }
 
-    @OneToMany(targetEntity = Car.class)
+    @OneToMany(targetEntity = Car.class, mappedBy ="category" )
     public List<Car> getCars() {
         return cars;
     }

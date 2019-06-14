@@ -3,6 +3,7 @@ package org.codexio.rentacar.domain.entities;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,9 +17,11 @@ public class User extends BaseEntity implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private List<Rent>myRents;
+    
+    private List<Rent> mySale;
+    private List<Rent>myPurchase;
+    
     private List<Car> myCars;
-    private List<Car> renterCars;
 
     private boolean isAccountNonLocked;
     private boolean isAccountNonExpired;
@@ -28,9 +31,9 @@ public class User extends BaseEntity implements UserDetails {
     
 
     public User() {
-        this.myRents = new ArrayList<>();
+        this.mySale = new ArrayList<>();
         this.myCars = new ArrayList<>();
-        this.renterCars = new ArrayList<>();
+        this.myPurchase = new ArrayList<>();
     }
 
     @Override
@@ -80,13 +83,22 @@ public class User extends BaseEntity implements UserDetails {
         this.password = password;
     }
 
-    @OneToMany(targetEntity = Rent.class)
-    public List<Rent> getMyRents() {
-        return myRents;
+    @OneToMany(targetEntity = Rent.class, mappedBy = "seller")
+    public List<Rent> getMySale() {
+        return mySale;
     }
 
-    public void setMyRents(List<Rent> myRents) {
-        this.myRents = myRents;
+    public void setMySale(List<Rent> mySale) {
+        this.mySale = mySale;
+    }
+
+    @OneToMany(targetEntity = Rent.class, mappedBy = "buyer")
+    public List<Rent> getMyPurchase() {
+        return myPurchase;
+    }
+
+    public void setMyPurchase(List<Rent> myPurchase) {
+        this.myPurchase = myPurchase;
     }
 
     @OneToMany(targetEntity = Car.class, mappedBy = "owner")
@@ -97,15 +109,7 @@ public class User extends BaseEntity implements UserDetails {
     public void setMyCars(List<Car> myCars) {
         this.myCars = myCars;
     }
-
-    @ManyToMany(mappedBy = "renters" ,targetEntity = Car.class, cascade = CascadeType.REMOVE)
-    public List<Car> getRenterCars() {
-        return renterCars;
-    }
-
-    public void setRenterCars(List<Car> renterCars) {
-        this.renterCars = renterCars;
-    }
+    
 
     @Override
     public boolean isAccountNonLocked() {
@@ -145,17 +149,6 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id",
-                    referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id",
-                    referencedColumnName = "id"
-            )
-    )
     public Set<Role> getAuthorities() {
         return authorities;
     }

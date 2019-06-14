@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CarService {
 
-    public CarServiceModel createCar (CarServiceModel carServiceModel, String categoryName);
+    public CarServiceModel createCar (CarServiceModel carServiceModel, String username);
 
     public List<CarServiceModel> findAllCars();
 
