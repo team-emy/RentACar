@@ -30,12 +30,12 @@
                 <div class="login-page-content">
                     <div class="login-form">
                         <h3>Welcome Back!</h3>
-                        <form action="index.html">
+                        <form th:action="@{/users/login}" method="post">
                             <div class="username">
-                                <input type="text" placeholder="Email">
+                                <input type="text" placeholder="Username" id="username"  name="username">
                             </div>
                             <div class="password">
-                                <input type="password" placeholder="Password">
+                                <input type="password" placeholder="Password" id="password"  name="password">
                             </div>
                             <div class="log-btn">
                                 <button type="submit"><i class="fa fa-sign-in"></i> Log In</button>
@@ -43,7 +43,7 @@
                         </form>
                     </div>
                     <div class="create-ac">
-                        <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+                        <p>Don't have an account? <a href="/users/register">Sign Up</a></p>
                     </div>
                 </div>
             </div>

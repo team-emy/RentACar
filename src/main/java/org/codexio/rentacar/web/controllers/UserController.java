@@ -6,10 +6,7 @@ import org.codexio.rentacar.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -55,7 +52,7 @@ public class UserController extends BaseController{
         UserServiceModel model = this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
         this.userService.register(model);
         
-        return redirect("/login");
+        return redirect("/users/login");
     }
 
     

@@ -5,6 +5,8 @@ import org.codexio.rentacar.domain.models.service.UserServiceModel;
 import org.codexio.rentacar.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,11 @@ public class UserServiceImpl implements UserService {
         this.userRepository.save(user);
         
         return this.modelMapper.map(user, UserServiceModel.class);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = this.userRepository.findByUsername(username).orElseThrow();
+        return user;
     }
 }
