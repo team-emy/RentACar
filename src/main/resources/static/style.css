@@ -1612,6 +1612,7 @@ body,
 	overflow: hidden;
 	padding: 50px 20px;
 	width: 90%;
+	text-align: center;
 }
 
 .bookinput-item {
@@ -3278,4 +3279,16 @@ select {
 
 .dropdown {
 	width: 3em;
+}
+
+#calc:hover,
+#changeHover:hover{
+	background-color: black;
+	color: #B975AF;
+}
+
+#category {
+	width: 33%;
+	margin: 0 auto;
+	border-color: #B975AF;
 }

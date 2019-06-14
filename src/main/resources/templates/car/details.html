@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+
+<!--== Page Title Area Start ==-->
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>CAR NAME</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Car List Area Start ==-->
+<section id="car-list-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Car List Content Start -->
+            <div class="col-lg-8">
+                <div class="car-details-content">
+                    <h2>Aston Martin One-77 <span class="price">Rent: <span
+                            id="price"><b>150</b></span><b>$</b></span></h2>
+                    <div class="single-car-preview">
+                        <img src="assets/img/car/car-5.jpg" alt="JSOFT">
+                    </div>
+                    <div class="car-details-info">
+                        <h4>Additional Info</h4>
+                        <p>The Aventador LPER 720-4 50° ise a limited (200 units – 100 Coupe and 100 Roadster)
+                            versione of thed Aventadored LP 700-4 commemorating the 50th anniversary of Lamborghini.
+                            It included ised increased engine power to 720 PS (530 kW; 710 bhp) via a new specific
+                            engine calibration, enlarged and extended front air intakes and the aerodynamic
+                            splitter.</p>
+
+                        <div class="technical-info">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="tech-info-table">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Make</th>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Model</th>
+                                                <td>Petrol</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Year</th>
+                                                <td>5</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Fuel Consumption</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Horsepower</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>AC</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Transmission</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Doors</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Passengers</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Category</th>
+                                                <td>Automatic</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div>
+                            Start Date: <input type="date" id="startDate" />
+                        </div>
+
+                        <div>
+                            End Date: <input type="date" id="endDate" />
+                        </div>
+
+                        <div class="input-submit">
+                            <button type="submit" id="calc">Calculate price</button>
+                        </div>
+                        <br>
+
+                        <div id="totalPrice"></div>
+
+                        <script>
+                            function days_between(date1, date2) {
+                                // The number of milliseconds in one day
+                                let ONE_DAY = 1000 * 60 * 60 * 24;
+
+                                // Convert both dates to milliseconds
+                                let date1_ms = date1.getTime();
+                                let date2_ms = date2.getTime();
+
+                                // Calculate the difference in milliseconds
+                                let difference_ms = Math.abs(date1_ms - date2_ms);
+
+                                // Convert back to days and return
+                                return Math.round(difference_ms / ONE_DAY) + 1;
+                            }
+
+                            function dateCompare(date1, date2) {
+                                return new Date(date2) > new Date(date1);
+                            }
+
+
+                            $("#calc").click(function () {
+                                let today = new Date();
+                                today.setHours(0,0,0,0);
+
+                                if (dateCompare($("#startDate")['0'].valueAsDate, $("#endDate")['0'].valueAsDate) &&
+                                    dateCompare(today, $("#startDate")['0'].valueAsDate)
+                                ) {
+                                    let days = days_between($("#startDate")['0'].valueAsDate, $("#endDate")['0'].valueAsDate);
+
+                                    let pricePerDay = +$("#price")['0'].outerText;
+
+                                    let totalPrice = days * pricePerDay;
+
+                                    $("#totalPrice").text('Total Price: $' + totalPrice);
+                                } else {
+                                    $("#totalPrice").text('Please enter valid dates.');
+                                }
+                            });
+                        </script>
+                        <div class="input-submit">
+                            <button id="changeHover" type="submit">Rent</button>
+                            <button id="changeHover" type="reset">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Car List Content End -->
+
+            <!-- Sidebar Area Start -->
+            <div class="col-lg-4">
+                <div class="sidebar-content-wrap m-t-50">
+                    <!-- Single Sidebar Start -->
+                    <div class="single-sidebar">
+                        <h3>For More Informations</h3>
+
+                        <div class="sidebar-body">
+                            <p><i class="fa fa-mobile"></i> +666666 666 666</p>
+                            <p><i class="fa fa-clock-o"></i> All Day, All Night</p>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar End -->
+
+                    <!-- Single Sidebar Start -->
+                    <div class="single-sidebar">
+                        <h3>Connect with Us</h3>
+
+                        <div class="sidebar-body">
+                            <div class="social-icons text-center">
+                                <a href="https://github.com/team-emy/RentACar" target="_blank"><i class="fa fa-github"></i></a>
+                                <a href="https://web.facebook.com/milena.damesova?fref=search&__tn__=%2Cd%2CP-R&eid=ARAF8jbRa04rbUU-rRf9rpzvBwQ6DQohFFIvKEO7JEywlFZegZ_ye195g_OkdjnwfxRUfVQ7ItNMsksq" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://web.facebook.com/profile.php?id=100001042664610&__tn__=%2Cd-]-h-R&eid=ARAJgpH_Mj9VMZtHcsArrvddchYQLNPDEMdTX5SmhjbUMKg8pRtrZCME95yy61scFhBoEz2PcBAnO-Wi" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://web.facebook.com/yoana.borissova" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar End -->
+                </div>
+            </div>
+            <!-- Sidebar Area End -->
+        </div>
+    </div>
+</section>
+<!--== Car List Area End ==-->
+
+<th:block th:include="~{fragments/footer}"></th:block>
+</body>
+</html>
