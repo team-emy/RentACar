@@ -452,6 +452,10 @@ a.slicknav_btn {
 	text-transform: uppercase;
 }
 
+.dropdown {
+	width: 20em;
+}
+
 .book-now-btn:focus {
 	color: #222;
 }
@@ -2934,7 +2938,19 @@ body,
 
 .login-form {
 	background-color: #B975AF;
-	padding: 50px 20px 15px;
+	padding-top: 50px;
+	padding-right: 25px;
+	padding-left: 25px;
+	padding-bottom: 15px;
+}
+
+input, select{
+	width:100%;
+	box-sizing:border-box;
+}
+
+select {
+	padding-top: 50px;
 }
 
 .login-form h3 {
