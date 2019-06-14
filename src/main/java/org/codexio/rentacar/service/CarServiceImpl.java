@@ -54,5 +54,23 @@ public class CarServiceImpl implements CarService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<CarServiceModel> getMyCars(String username) {
+        return this.carRepository.findAllByOwner(username)
+                .stream()
+                .map(c -> this.modelMapper.map(c, CarServiceModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CarServiceModel findById(String id) {
+        Car car = this.carRepository.findById(id).orElseThrow();
+        CarServiceModel carServiceModel = this.modelMapper
+                .map(car, CarServiceModel.class);
+        carServiceModel.setCategory(car.getCategory().getName());
+        
+        return carServiceModel;
+    }
+
 
 }

@@ -9,5 +9,9 @@ public interface CarService {
     public CarServiceModel createCar (CarServiceModel carServiceModel, String username);
 
     public List<CarServiceModel> findAllCars();
+    
+    List<CarServiceModel> getMyCars(String username);
+    
+    CarServiceModel findById(String id);
 
 }
