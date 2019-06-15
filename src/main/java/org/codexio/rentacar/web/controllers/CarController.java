@@ -2,6 +2,7 @@ package org.codexio.rentacar.web.controllers;
 
 import org.codexio.rentacar.domain.models.binding.CarCreateBindingModel;
 import org.codexio.rentacar.domain.models.binding.CarEditBindingModel;
+import org.codexio.rentacar.domain.models.binding.RentCreateBindingModel;
 import org.codexio.rentacar.domain.models.service.CarServiceModel;
 import org.codexio.rentacar.domain.models.view.CarDetailsViewModel;
 import org.codexio.rentacar.domain.models.view.CarEditViewModel;
@@ -59,7 +60,8 @@ public class CarController extends BaseController {
     }
     
     @GetMapping("/details/{id}")
-    public ModelAndView carDetails(@PathVariable String id, ModelAndView modelAndView){
+    public ModelAndView carDetails(@PathVariable String id,
+                                   ModelAndView modelAndView){
         CarDetailsViewModel carDetailsViewModel = this.modelMapper
                 .map(this.carService.findById(id), CarDetailsViewModel.class);
         modelAndView.addObject("car", carDetailsViewModel);

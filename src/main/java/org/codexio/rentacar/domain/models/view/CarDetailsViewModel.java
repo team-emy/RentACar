@@ -3,6 +3,7 @@ package org.codexio.rentacar.domain.models.view;
 import java.math.BigDecimal;
 public class CarDetailsViewModel {
 
+    private String id;
     private String make;
     private String model;
     private String year;
@@ -19,6 +20,14 @@ public class CarDetailsViewModel {
     private String category;
 
     public CarDetailsViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMake() {

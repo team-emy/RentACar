@@ -12,8 +12,8 @@ public class Rent extends BaseEntity{
     private User seller;
     private User buyer;
     private BigDecimal totalPrice;
-    private LocalDateTime startDay;
-    private LocalDateTime endDay;
+    private String startDay;
+    private String endDay;
     private Car car;
 
     public Rent() {
@@ -50,20 +50,20 @@ public class Rent extends BaseEntity{
     }
 
     @Column(name = "start_day")
-    public LocalDateTime getStartDay() {
+    public String getStartDay() {
         return startDay;
     }
 
-    public void setStartDay(LocalDateTime startDay) {
+    public void setStartDay(String startDay) {
         this.startDay = startDay;
     }
 
     @Column(name = "end_day")
-    public LocalDateTime getEndDay() {
+    public String getEndDay() {
         return endDay;
     }
 
-    public void setEndDay(LocalDateTime endDay) {
+    public void setEndDay(String endDay) {
         this.endDay = endDay;
     }
 

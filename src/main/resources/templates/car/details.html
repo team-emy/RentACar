@@ -92,22 +92,35 @@
 
                         <br>
 
-                        <div>
-                            Start Date: <input type="date" id="startDate" />
-                        </div>
-
-                        <div>
-                            End Date: <input type="date" id="endDate" />
-                        </div>
                         
-                        <div id="price" style="display: none" th:text="${car.price}"></div>
 
-                        <div class="input-submit">
-                            <button type="submit" id="calc">Calculate price</button>
-                        </div>
-                        <br>
+                        <form method="post" th:action="@{/rents/my/{id}(id=${car.id})}">
+                            <div>
+                                Start Date: <input type="date" id="startDate" name="startDate" />
+                            </div>
 
-                        <div id="totalPrice"></div>
+                            <div>
+                                End Date: <input type="date" id="endDate" name="endDate" />
+                            </div>
+
+                            <div id="price" style="display: none" th:text="${car.price}"></div>
+
+                            <br>
+
+                            <div class="input-submit">
+                                <button type="button" id="calc">Calculate price</button>
+                            </div>
+                            Total Price: <input id="totalPrice" name="totalPrice"/>
+                            <div  ></div>
+
+                            <div class="input-submit">
+                                <div sec:authorize="isAuthenticated()">
+                                    <button id="changeHover" type="submit" >Rent</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        
 
                         <script>
                             function days_between(date1, date2) {
@@ -142,18 +155,18 @@
                                     let pricePerDay = +$("#price")[0].innerText;
 
                                     let totalPrice = days * pricePerDay;
+                                    
+                                    console.log(days);
+                                    console.log(pricePerDay);
+                                    console.log(totalPrice);
 
-                                    $("#totalPrice").text('Total Price: $' + totalPrice);
+                                    $("#totalPrice").val(totalPrice);
                                 } else {
                                     $("#totalPrice").text('Please enter valid dates.');
                                 }
                             });
                         </script>
-                        <div class="input-submit">
-                            <div sec:authorize="isAuthenticated()">
-                                <button id="changeHover" type="submit">Rent</button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
