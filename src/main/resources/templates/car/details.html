@@ -150,8 +150,9 @@
                             });
                         </script>
                         <div class="input-submit">
-                            <button id="changeHover" type="submit">Rent</button>
-                            <button id="changeHover" type="reset">Edit</button>
+                            <div sec:authorize="isAuthenticated()">
+                                <button id="changeHover" type="submit">Rent</button>
+                            </div>
                         </div>
                     </div>
                 </div>

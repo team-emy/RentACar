@@ -72,5 +72,34 @@ public class CarServiceImpl implements CarService {
         return carServiceModel;
     }
 
+    @Override
+    public CarServiceModel editCar(CarServiceModel carServiceModel, String username, String carId) {
+        Category category = this.categoryRepository.findByName(carServiceModel.getCategory()).orElseThrow();
+        Car car = this.carRepository.findById(carId).orElseThrow();
+        car = this.saveTheChanges(car, carServiceModel);
+        car.setCategory(category);
+        this.carRepository.save(car);
+
+        return carServiceModel;
+    }
+
+    private Car saveTheChanges(Car car, CarServiceModel carServiceModel) {
+        car.setMake(carServiceModel.getMake());
+        car.setModel(carServiceModel.getModel());
+        car.setYear(carServiceModel.getYear());
+        car.setFuel(carServiceModel.getFuel());
+        car.setFuelConsumption(carServiceModel.getFuelConsumption());
+        car.setHorsepower(carServiceModel.getHorsepower());
+        car.setPicture(carServiceModel.getPicture());
+        car.setHasAC(carServiceModel.isHasAC());
+        car.setTransmission(carServiceModel.getTransmission());
+        car.setDoors(carServiceModel.getDoors());
+        car.setPassengers(carServiceModel.getPassengers());
+        car.setPrice(carServiceModel.getPrice());
+        car.setDescription(carServiceModel.getDescription());
+        
+        return car;
+    }
+
 
 }

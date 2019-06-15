@@ -1,16 +1,15 @@
 package org.codexio.rentacar.web.controllers;
 
 import org.codexio.rentacar.domain.models.binding.CarCreateBindingModel;
+import org.codexio.rentacar.domain.models.binding.CarEditBindingModel;
 import org.codexio.rentacar.domain.models.service.CarServiceModel;
 import org.codexio.rentacar.domain.models.view.CarDetailsViewModel;
+import org.codexio.rentacar.domain.models.view.CarEditViewModel;
 import org.codexio.rentacar.domain.models.view.CarMyAllViewModel;
 import org.codexio.rentacar.service.CarService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -66,5 +65,27 @@ public class CarController extends BaseController {
         modelAndView.addObject("car", carDetailsViewModel);
         
         return view("car/details", modelAndView);
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView carEdit(@PathVariable String id, ModelAndView modelAndView){
+        CarEditViewModel carEditViewModel = this.modelMapper
+                .map(this.carService.findById(id), CarEditViewModel.class);
+        modelAndView.addObject("car", carEditViewModel);
+
+        return view("car/edit-car", modelAndView);
+    }
+
+    @PostMapping("/edit/{id}")
+    public ModelAndView carEdit(@PathVariable String id,
+                                ModelAndView modelAndView,
+                                Principal principal,
+                                @ModelAttribute CarEditBindingModel carEditBindingModel){
+
+        String username = principal.getName();
+        CarServiceModel carServiceModel = this.modelMapper.map(carEditBindingModel, CarServiceModel.class);
+        this.carService.editCar(carServiceModel, username, id);
+
+        return redirect("/cars/mine");
     }
 }

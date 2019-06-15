@@ -14,4 +14,6 @@ public interface CarService {
     
     CarServiceModel findById(String id);
 
+    CarServiceModel editCar (CarServiceModel carServiceModel, String username, String carId);
+
 }

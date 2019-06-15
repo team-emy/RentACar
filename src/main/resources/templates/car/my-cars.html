@@ -45,7 +45,8 @@
                                             <li th:text="${car.fuel}"></li>
                                             <li th:text="${car.transmission}"></li>
                                         </ul>
-                                        <a href="#" class="rent-btn">Details</a>
+                                        <a th:href="@{/cars/details/{id}(id=${car.id})}" class="rent-btn">Details</a>
+                                        <a th:href="@{/cars/edit/{id}(id=${car.id})}" class="rent-btn">Edit</a>
                                     </div>
                                 </div>
                             </div>
