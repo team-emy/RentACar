@@ -83,6 +83,14 @@ public class CarServiceImpl implements CarService {
         return carServiceModel;
     }
 
+    @Override
+    public List<CarServiceModel> findAllCarsByCategory(String category) {
+        return this.carRepository.findAllByCategory(category)
+                .stream()
+                .map(c -> this.modelMapper.map(c , CarServiceModel.class))
+                .collect(Collectors.toList());
+    }
+
     private Car saveTheChanges(Car car, CarServiceModel carServiceModel) {
         car.setMake(carServiceModel.getMake());
         car.setModel(carServiceModel.getModel());

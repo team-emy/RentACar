@@ -16,4 +16,7 @@ public interface CarRepository extends JpaRepository<Car,String> {
 
     @Query("SELECT c FROM Car c WHERE c.owner.username = :username")
     List<Car> findAllByOwner(@Param("username") String username);
+
+    @Query("SELECT c FROM Car c WHERE c.category.name = :name")
+    List<Car> findAllByCategory(@Param("name") String name);
 }
