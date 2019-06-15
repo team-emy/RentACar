@@ -5,6 +5,7 @@ import org.codexio.rentacar.domain.models.binding.CarCreateBindingModel;
 import org.codexio.rentacar.domain.models.binding.RentCreateBindingModel;
 import org.codexio.rentacar.domain.models.service.CarServiceModel;
 import org.codexio.rentacar.domain.models.service.RentServiceModel;
+import org.codexio.rentacar.domain.models.view.RentViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

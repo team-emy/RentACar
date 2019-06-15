@@ -2,17 +2,17 @@ package org.codexio.rentacar.web.controllers;
 
 import org.codexio.rentacar.domain.models.binding.RentCreateBindingModel;
 import org.codexio.rentacar.domain.models.service.RentServiceModel;
+import org.codexio.rentacar.domain.models.view.RentViewModel;
 import org.codexio.rentacar.service.RentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/rents")
@@ -38,4 +38,52 @@ public class RentController extends BaseController {
         return redirect("/");
     }
     
+    @GetMapping("/fromme")
+    public ModelAndView getMyRents(Principal principal, ModelAndView modelAndView){
+        String username = principal.getName();
+        List<RentViewModel> rentServiceModels = this.rentService.getRentsByMe(username)
+                .stream()
+                .map(r -> {
+                   String usernameBuyer = r.getSeller().getUsername();
+                   String startDate = r.getStartDay();
+                   String endDate = r.getEndDay();
+
+                    RentViewModel r2 = this.modelMapper.map(r, RentViewModel.class);
+                   
+                   r2.setStartDate(startDate);
+                   r2.setEndDate(endDate);
+                   r2.setUser(usernameBuyer);
+                   
+                   return r2;
+                } ) .collect(Collectors.toList());
+        
+        
+        modelAndView.addObject("rents",rentServiceModels );
+        return view("rent/rent-mine" , modelAndView);
+    }
+
+
+    @GetMapping("/byme")
+    public ModelAndView getRentsByMe(Principal principal, ModelAndView modelAndView){
+        String username = principal.getName();
+        List<RentViewModel> rentServiceModels = this.rentService.findAllMyRents(username)
+                .stream()
+                .map(r -> {
+                    String usernameBuyer = r.getBuyer().getUsername();
+                    String startDate = r.getStartDay();
+                    String endDate = r.getEndDay();
+
+                    RentViewModel r2 = this.modelMapper.map(r, RentViewModel.class);
+
+                    r2.setStartDate(startDate);
+                    r2.setEndDate(endDate);
+                    r2.setUser(usernameBuyer);
+
+                    return r2;
+                } ) .collect(Collectors.toList());
+
+
+        modelAndView.addObject("rents",rentServiceModels );
+        return view("rent/rent-mine" , modelAndView);
+    }
 }

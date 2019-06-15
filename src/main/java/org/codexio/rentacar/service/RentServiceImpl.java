@@ -11,6 +11,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class RentServiceImpl implements RentService{
     
@@ -42,5 +45,29 @@ public class RentServiceImpl implements RentService{
         this.rentRepository.save(rent);
         
         return this.modelMapper.map(rent, RentServiceModel.class);
+    }
+
+    @Override
+    public List<RentServiceModel> findAllMyRents(String myUsername) {
+        List<Rent> rentsEntities = this.rentRepository.findAllMyRents(myUsername);
+        
+        List<RentServiceModel> rentServiceModels = rentsEntities
+                .stream()
+                .map(r -> this.modelMapper.map(r, RentServiceModel.class))
+                .collect(Collectors.toList()) ;
+        
+        return rentServiceModels;
+    }
+
+    @Override
+    public List<RentServiceModel> getRentsByMe(String myUsername) {
+        List<Rent> rentsEntities = this.rentRepository.findAllRentsToBuyer(myUsername);
+
+        List<RentServiceModel> rentServiceModels = rentsEntities
+                .stream()
+                .map(r -> this.modelMapper.map(r, RentServiceModel.class))
+                .collect(Collectors.toList()) ;
+
+        return rentServiceModels;
     }
 }
