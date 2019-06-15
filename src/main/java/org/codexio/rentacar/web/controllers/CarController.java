@@ -90,4 +90,11 @@ public class CarController extends BaseController {
 
         return redirect("/cars/mine");
     }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteCar(@PathVariable String id){
+        this.carService.deleteCar(id);
+
+        return redirect("/cars/mine");
+    }
 }

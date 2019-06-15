@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -92,35 +91,32 @@
 
                         <br>
 
-                        
 
                         <form method="post" th:action="@{/rents/my/{id}(id=${car.id})}">
                             <div>
-                                Start Date: <input type="date" id="startDate" name="startDate" />
+                                Start Date: <input type="date" id="startDate" name="startDate"/>
                             </div>
 
                             <div>
-                                End Date: <input type="date" id="endDate" name="endDate" />
+                                End Date: <input type="date" id="endDate" name="endDate"/>
                             </div>
-
-                            <div id="price" style="display: none" th:text="${car.price}"></div>
-
                             <br>
+
+                            <div id="totalPrice"></div>
 
                             <div class="input-submit">
                                 <button type="button" id="calc">Calculate price</button>
                             </div>
-                            Total Price: <input id="totalPrice" name="totalPrice"/>
-                            <div  ></div>
+                            <input id="hiddenPrice" style="display: none" name="totalPrice">
+
+                            <div id="price" th:text="${car.price}" style="display: none"></div>
 
                             <div class="input-submit">
                                 <div sec:authorize="isAuthenticated()">
-                                    <button id="changeHover" type="submit" >Rent</button>
+                                    <button id="changeHover" type="submit">Rent</button>
                                 </div>
                             </div>
                         </form>
-
-                        
 
                         <script>
                             function days_between(date1, date2) {
@@ -145,7 +141,7 @@
 
                             $("#calc").click(function () {
                                 let today = new Date();
-                                today.setHours(0,0,0,0);
+                                today.setHours(0, 0, 0, 0);
 
                                 if (dateCompare($("#startDate")['0'].valueAsDate, $("#endDate")['0'].valueAsDate) &&
                                     dateCompare(today, $("#startDate")['0'].valueAsDate)
@@ -155,18 +151,20 @@
                                     let pricePerDay = +$("#price")[0].innerText;
 
                                     let totalPrice = days * pricePerDay;
-                                    
+
                                     console.log(days);
                                     console.log(pricePerDay);
                                     console.log(totalPrice);
 
-                                    $("#totalPrice").val(totalPrice);
+                                    $("#totalPrice").text('Total price: ' + totalPrice);
+                                    $("#hiddenPrice").val(totalPrice);
+
                                 } else {
                                     $("#totalPrice").text('Please enter valid dates.');
                                 }
                             });
                         </script>
-                        
+
                     </div>
                 </div>
             </div>
@@ -192,10 +190,14 @@
 
                         <div class="sidebar-body">
                             <div class="social-icons text-center">
-                                <a href="https://github.com/team-emy/RentACar" target="_blank"><i class="fa fa-github"></i></a>
-                                <a href="https://web.facebook.com/milena.damesova?fref=search&__tn__=%2Cd%2CP-R&eid=ARAF8jbRa04rbUU-rRf9rpzvBwQ6DQohFFIvKEO7JEywlFZegZ_ye195g_OkdjnwfxRUfVQ7ItNMsksq" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="https://web.facebook.com/profile.php?id=100001042664610&__tn__=%2Cd-]-h-R&eid=ARAJgpH_Mj9VMZtHcsArrvddchYQLNPDEMdTX5SmhjbUMKg8pRtrZCME95yy61scFhBoEz2PcBAnO-Wi" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="https://web.facebook.com/yoana.borissova" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://github.com/team-emy/RentACar" target="_blank"><i
+                                        class="fa fa-github"></i></a>
+                                <a href="https://web.facebook.com/milena.damesova?fref=search&__tn__=%2Cd%2CP-R&eid=ARAF8jbRa04rbUU-rRf9rpzvBwQ6DQohFFIvKEO7JEywlFZegZ_ye195g_OkdjnwfxRUfVQ7ItNMsksq"
+                                   target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://web.facebook.com/profile.php?id=100001042664610&__tn__=%2Cd-]-h-R&eid=ARAJgpH_Mj9VMZtHcsArrvddchYQLNPDEMdTX5SmhjbUMKg8pRtrZCME95yy61scFhBoEz2PcBAnO-Wi"
+                                   target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://web.facebook.com/yoana.borissova" target="_blank"><i
+                                        class="fa fa-facebook"></i></a>
                             </div>
                         </div>
                     </div>

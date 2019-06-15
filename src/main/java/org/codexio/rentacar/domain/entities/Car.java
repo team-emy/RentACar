@@ -95,7 +95,7 @@ public class Car extends BaseEntity {
         this.picture = picture;
     }
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public User getOwner() {
         return owner;

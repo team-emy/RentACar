@@ -18,4 +18,6 @@ public interface CarService {
 
 
     List<CarServiceModel> findAllCarsByCategory(String category);
+
+    public void deleteCar(String id);
 }

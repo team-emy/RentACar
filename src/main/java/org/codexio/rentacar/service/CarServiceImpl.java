@@ -2,10 +2,12 @@ package org.codexio.rentacar.service;
 
 import org.codexio.rentacar.domain.entities.Car;
 import org.codexio.rentacar.domain.entities.Category;
+import org.codexio.rentacar.domain.entities.Rent;
 import org.codexio.rentacar.domain.entities.User;
 import org.codexio.rentacar.domain.models.service.CarServiceModel;
 import org.codexio.rentacar.repository.CarRepository;
 import org.codexio.rentacar.repository.CategoryRepository;
+import org.codexio.rentacar.repository.RentRepository;
 import org.codexio.rentacar.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,18 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
+    private final RentRepository rentRepository;
 
 
     @Autowired
     public CarServiceImpl(ModelMapper modelMapper,
                           CarRepository carRepository,
-                          CategoryRepository categoryRepository, UserRepository userRepository) {
+                          CategoryRepository categoryRepository, UserRepository userRepository, RentRepository rentRepository) {
         this.modelMapper = modelMapper;
         this.carRepository = carRepository;
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
+        this.rentRepository = rentRepository;
     }
 
     @Override
@@ -89,6 +93,14 @@ public class CarServiceImpl implements CarService {
                 .stream()
                 .map(c -> this.modelMapper.map(c , CarServiceModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteCar(String id) {
+        Car car = this.carRepository.findById(id).orElseThrow();
+        List<Rent> rents = this.rentRepository.findAllRentsToCar(car.getId());
+        this.rentRepository.deleteAll(rents);
+        this.carRepository.delete(car);
     }
 
     private Car saveTheChanges(Car car, CarServiceModel carServiceModel) {
